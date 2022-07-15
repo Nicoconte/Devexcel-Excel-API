@@ -1,0 +1,80 @@
+{
+	"filename": "Reportes Easy Crud",
+	"spreadsheets": [
+        {
+            "name": "Errores easy crud",
+            "cells": [
+                {
+                    "axis": "A1",
+                    "style": {
+                        "fill": {
+                            "type": "gradient",
+                            "color": ["#52DAB9"],
+                            "pattern": 1
+                        }
+                    }
+                },
+                {
+                    "axis": "B1",
+                    "style": {
+                        "fill": {
+                            "type": "pattern",
+                            "color": ["#8D2090"],
+                            "pattern": 1
+                        }
+                    }
+                }
+            ],
+            "columns": [
+                {
+                    "title": "Entidades",
+                    "width": 35.0,
+                    "values": [
+                        "clientes", "facturas", "facturas_det" , "users", "logs"
+                    ]
+                },
+                {
+                    "title": "Errores",		
+                    "width": 50.0,
+                    "values": [
+                        "Null pointer exception",
+                        "Cannot convert int to float",
+                        "Details property not found",
+                        "Cannot convert Users to List<(string, object)>",
+                        "Index out of range" 
+                    ]
+                }
+            ]	
+	    },
+        {
+            "name": "Casos de uso",
+            "columns": [
+                {
+                    "title": "Clientes nuget",
+                    "comments": [
+                        {
+                            "index": 5,
+                            "content": {
+                                "author": "Nicolas",
+                                "text": "Esto hace referencia a VS Studio"
+                            }
+                        }
+                    ],
+                    "values": [
+                        "urllib",
+                        "okhttp",
+                        "Browsers",
+                        "Nuget VS VSIX",
+                        "Edge"
+                    ]
+                },
+                {
+                    "title": "Cantidad de descargas",		
+                    "values": [
+                         17, 8, 6, 4, 1
+                    ]
+                }
+            ]	
+	    }                
+    ]
+}

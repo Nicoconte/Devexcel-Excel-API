@@ -3,9 +3,9 @@ services:
   go:
     container_name: "devexcel-excel-api"
     environment:
-      - APP_ENV=dev
       - PORT=8080
       - HOST=http://localhost
+      - STORAGE=./storage
     build:
       context: .
       dockerfile: Dockerfile
