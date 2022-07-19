@@ -12,27 +12,25 @@ import (
 )
 
 func GenerateExcelHandler(ctx *gin.Context) {
-	excelParam := &types.ExcelParams{}
+	excel := &types.Excel{}
 
-	err := ctx.Bind(&excelParam)
-
-	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	excelParam.Filename = strings.ReplaceAll(excelParam.Filename, " ", "_")
-
-	target, err := services.GenerateExcel(*excelParam)
+	err := ctx.Bind(&excel)
 
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	filename := fmt.Sprintf("%s.xlsx", excelParam.Filename)
+	excel.Filename = strings.ReplaceAll(excel.Filename, " ", "_")
 
-	fmt.Println("Salida ", target)
+	target, err := services.BuildExcel(*excel)
+
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	filename := fmt.Sprintf("%s.xlsx", excel.Filename)
 
 	ctx.Header("Content-Description", "File Transfer")
 	ctx.Header("Content-Transfer-Encoding", "binary")
@@ -41,6 +39,4 @@ func GenerateExcelHandler(ctx *gin.Context) {
 	ctx.File(target)
 
 	os.Remove(target)
-
-	return
 }

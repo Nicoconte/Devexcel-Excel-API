@@ -2,31 +2,30 @@ package types
 
 import "github.com/xuri/excelize/v2"
 
-type ExcelParams struct {
+type Excel struct {
 	Filename     string
 	Spreadsheets []ExcelSpreadsheet
 }
 
 type ExcelSpreadsheet struct {
 	Name    string
-	Cells   []ExcelCell
 	Columns []ExcelColumn
-}
-
-type ExcelCell struct {
-	Axis  string
-	Style *excelize.Style
+	Cells   []ExcelCell
 }
 
 type ExcelColumn struct {
-	Title    string
-	Comments []ExcelCellComment
-	Values   []any
-	Width    float64
+	Title  string
+	Values []any
+	Width  float64
+}
+
+type ExcelCell struct {
+	Axis    string
+	Style   *excelize.Style
+	Comment ExcelCellComment
 }
 
 type ExcelCellComment struct {
-	Index   int
 	Content ExcelCellCommentContent
 }
 
