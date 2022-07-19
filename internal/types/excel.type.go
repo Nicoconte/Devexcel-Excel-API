@@ -11,7 +11,6 @@ type ExcelSpreadsheet struct {
 	Name    string
 	Cells   []ExcelCell
 	Columns []ExcelColumn
-	//HeaderFooter *excelize.FormatHeaderFooter
 }
 
 type ExcelCell struct {

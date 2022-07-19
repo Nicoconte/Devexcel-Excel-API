@@ -57,15 +57,13 @@ func GenerateExcel(excelParam types.ExcelParams) (string, error) {
 			startIndex = 0
 		}
 
-		f.DeleteSheet("Sheet1")
-
 		//Spreadsheet processed FLAG
 		spreadsheetSeen[spreadSheet.Name] = true
 	}
 
-	outputpath := fmt.Sprintf("%s/%s.xlsx", utils.GetStoragePath(), excelParam.Filename)
+	f.DeleteSheet("Sheet1")
 
-	fmt.Println("Salida ", outputpath)
+	outputpath := fmt.Sprintf("%s/%s.xlsx", utils.GetStoragePath(), excelParam.Filename)
 
 	if err := f.SaveAs(outputpath); err != nil {
 		fmt.Println("Err Excel: ", err.Error())
