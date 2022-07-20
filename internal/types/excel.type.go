@@ -9,6 +9,7 @@ type Excel struct {
 
 type ExcelSpreadsheet struct {
 	Name    string
+	Rows    []ExcelRow
 	Columns []ExcelColumn
 	Cells   []ExcelCell
 }
@@ -23,6 +24,11 @@ type ExcelCell struct {
 	Axis    string
 	Style   *excelize.Style
 	Comment ExcelCellComment
+}
+
+type ExcelRow struct {
+	Index  int
+	Height float64
 }
 
 type ExcelCellComment struct {

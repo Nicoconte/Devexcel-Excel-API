@@ -1,8 +1,13 @@
 {
-	"filename": "Reportes Easy Crud",
 	"spreadsheets": [
         {
             "name": "Errores easy crud",
+            "rows": [
+                {
+                    "index": 1,
+                    "height": 20.0
+                }
+            ],
             "cells": [
                 {
                     "axis": "A1",
@@ -11,22 +16,19 @@
                             "type": "pattern",
                             "color": ["#52DAB9"],
                             "pattern": 1
+                        },
+                        "alignment": {
+                            "vertical": "center",
+                            "horizontal": "center"
                         }
                     }
-                },
+                }, 
                 {
-                    "axis": "B1",
+                    "axis": "B1", 
                     "style": {
-                        "fill": {
-                            "type": "pattern",
-                            "color": ["#8D2090"],
-                            "pattern": 1
-                        }
-                    },
-                    "comment": {
-                        "content": {
-                            "author": "Nicolas",
-                            "text": "Esto hace referencia a VS Studio"
+                        "alignment": {
+                            "vertical": "center",
+                            "horizontal": "center"
                         }                        
                     }
                 }
@@ -54,9 +56,51 @@
 	    },
         {
             "name": "Casos de uso",
+            "cells": [
+                {
+                    "axis": "A1",
+                    "comment": {
+                        "content": {
+                            "author": "Nicolas",
+                            "text": "Esto hace referencia a VS Studio"
+                        }                        
+                    },
+                    "style": {
+                        "alignment": {
+                            "horizontal": "center",
+                            "vertical": "center"
+                        }
+                    }
+                },
+                {
+                    "axis": "B1",
+                    "style": {
+                        "alignment": {
+                            "horizontal": "center",
+                            "vertical": "center"
+                        }
+                    }
+                },
+                {
+                    "axis": "A5",
+                    "comment": {
+                        "content": {
+                            "author": "Nicolas",
+                            "text": " Esto hace referencia a VS Studio"
+                        }                        
+                    }
+                }                                
+            ],
+            "rows": [
+                {
+                    "index": 1,
+                    "height": 25.0
+                }
+            ],
             "columns": [
                 {
                     "title": "Clientes nuget",
+                    "width": 40.0,
                     "values": [
                         "urllib",
                         "okhttp",
@@ -67,6 +111,7 @@
                 },
                 {
                     "title": "Cantidad de descargas",		
+                    "width": 30.0,
                     "values": [
                          17, 8, 6, 4, 1
                     ]

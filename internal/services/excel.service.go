@@ -27,9 +27,17 @@ func BuildExcel(excel types.Excel) (string, error) {
 
 		file.NewSheet(currSpreadsheetName)
 
-		buildColumns(spreadSheet.Columns)
+		if len(spreadSheet.Columns) > 0 {
+			buildColumns(spreadSheet.Columns)
+		}
 
-		buildCells(spreadSheet.Cells)
+		if len(spreadSheet.Cells) > 0 {
+			buildCells(spreadSheet.Cells)
+		}
+
+		if len(spreadSheet.Rows) > 0 {
+			buildRows(spreadSheet.Rows)
+		}
 
 		//Spreadsheet processed => FLAG
 		spreadsheetSeen[spreadSheet.Name] = true
@@ -50,11 +58,13 @@ func BuildExcel(excel types.Excel) (string, error) {
 func buildCells(cells []types.ExcelCell) error {
 	for _, cell := range cells {
 
-		style, err := file.NewStyle(cell.Style)
-		if err != nil {
-			return err
+		if cell.Style != nil {
+			style, err := file.NewStyle(cell.Style)
+			if err != nil {
+				return err
+			}
+			file.SetCellStyle(currSpreadsheetName, cell.Axis, cell.Axis, style)
 		}
-		file.SetCellStyle(currSpreadsheetName, cell.Axis, cell.Axis, style)
 
 		if cell.Comment != (types.ExcelCellComment{}) {
 			cParsed := fmt.Sprintf(`{"author":"%s ", "text":" %s"}`, cell.Comment.Content.Author, cell.Comment.Content.Text)
@@ -63,6 +73,18 @@ func buildCells(cells []types.ExcelCell) error {
 	}
 
 	return nil
+}
+
+func buildRows(rows []types.ExcelRow) {
+	for _, row := range rows {
+
+		if row.Height == 0.0 && row.Index == 1 {
+			file.SetRowHeight(currSpreadsheetName, 0, 20.0)
+		} else {
+			file.SetRowHeight(currSpreadsheetName, row.Index, row.Height)
+		}
+
+	}
 }
 
 func buildColumns(columns []types.ExcelColumn) error {

@@ -3,6 +3,8 @@ package handlers
 import (
 	"devexcel-excel-api/internal/services"
 	"devexcel-excel-api/internal/types"
+	"devexcel-excel-api/internal/utils"
+	"errors"
 	"fmt"
 	"net/http"
 	"os"
@@ -21,7 +23,16 @@ func GenerateExcelHandler(ctx *gin.Context) {
 		return
 	}
 
-	excel.Filename = strings.ReplaceAll(excel.Filename, " ", "_")
+	if len(excel.Spreadsheets) <= 0 || excel.Spreadsheets == nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": errors.New("Spreadsheets cannot be empty")})
+		return
+	}
+
+	if excel.Filename == "" {
+		excel.Filename = utils.NewGuid()
+	} else {
+		excel.Filename = strings.ReplaceAll(excel.Filename, " ", "_")
+	}
 
 	target, err := services.BuildExcel(*excel)
 
