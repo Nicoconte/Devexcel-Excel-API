@@ -7,7 +7,6 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -19,7 +18,7 @@ func GenerateExcelHandler(ctx *gin.Context) {
 	err := ctx.Bind(&excel)
 
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("Cannot bind excel struct. Error: %s", err.Error())})
 		return
 	}
 
@@ -37,7 +36,7 @@ func GenerateExcelHandler(ctx *gin.Context) {
 	target, err := services.BuildExcel(*excel)
 
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("Cannot generate excel. Error: %s", err.Error())})
 		return
 	}
 
@@ -49,5 +48,5 @@ func GenerateExcelHandler(ctx *gin.Context) {
 	ctx.Header("Content-Type", "application/octet-stream")
 	ctx.File(target)
 
-	os.Remove(target)
+	utils.DeleteFileFromStorage(target)
 }
