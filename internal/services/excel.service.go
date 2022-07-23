@@ -45,10 +45,14 @@ func BuildExcel(excel types.Excel) (string, error) {
 
 	file.DeleteSheet("Sheet1")
 
-	outputpath := fmt.Sprintf("%s/%s.xlsx", utils.GetStoragePath(), excel.Filename)
+	path, err := utils.GetStoragePath()
+	if err != nil {
+		return "", err
+	}
+
+	outputpath := fmt.Sprintf("%s/%s.xlsx", path, excel.Filename)
 
 	if err := file.SaveAs(outputpath); err != nil {
-		fmt.Println("Err Excel: ", err.Error())
 		return "", err
 	}
 

@@ -60,12 +60,6 @@
             "cells": [
                 {
                     "axis": "A1",
-                    "comment": {
-                        "content": {
-                            "author": "Nicolas",
-                            "text": "Esto hace referencia a VS Studio"
-                        }                        
-                    },
                     "style": {
                         "alignment": {
                             "horizontal": "center",

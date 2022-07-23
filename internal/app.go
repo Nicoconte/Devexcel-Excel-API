@@ -8,5 +8,7 @@ import (
 )
 
 func Run() {
-	http.ListenAndServe(fmt.Sprintf("%s:%s", utils.Config.Host, utils.Config.Port), routes.RoutesHandler())
+	addr := fmt.Sprintf("%s:%s", utils.Config.Host, utils.Config.Port)
+
+	http.ListenAndServe(addr, routes.RoutesHandler())
 }
