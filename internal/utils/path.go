@@ -8,8 +8,6 @@ import (
 
 func GetStoragePath() (string, error) {
 
-	fmt.Println("Datos ", Config)
-
 	switch Config.Env {
 	case "DOCKER":
 		return Config.Storage, nil

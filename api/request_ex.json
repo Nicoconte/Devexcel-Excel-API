@@ -6,7 +6,7 @@
             "rows": [
                 {
                     "index": 1,
-                    "height": 20.0
+                    "height": 40.0
                 }
             ],
             "cells": [
@@ -17,6 +17,12 @@
                             "type": "pattern",
                             "color": ["#52DAB9"],
                             "pattern": 1
+                        },
+                        "font": {
+                            "bold": true,
+                            "family": "Times New Roman",
+                            "size": 36,
+                            "color": "#207F90"
                         },
                         "alignment": {
                             "vertical": "center",
@@ -30,7 +36,12 @@
                         "alignment": {
                             "vertical": "center",
                             "horizontal": "center"
-                        }                        
+                        },
+                        "font": {
+                            "family": "Tahoma",
+                            "size": 26,
+                            "color": "#902F20"
+                        }                                               
                     }
                 }
             ],
@@ -43,7 +54,18 @@
                     ]
                 },
                 {
-                    "title": "Errores",		
+                    "title": "Errores",
+                    "style": {
+                        "alignment": {
+                            "vertical": "center",
+                            "horizontal": "center"
+                        },
+                        "font": {
+                            "family": "Tahoma",
+                            "size": 14,
+                            "color": "#902F20"
+                        }                                               
+                    },                    	
                     "width": 50.0,
                     "values": [
                         "Null pointer exception",

@@ -108,7 +108,29 @@ func buildColumns(columns []types.ExcelColumn) error {
 			return err
 		}
 
+		err = setColumnStyle(axis, column.Style, startIndex, len(column.Values)+startIndex)
+		if err != nil {
+			return err
+		}
+
 		startIndex = 0
+	}
+
+	return nil
+}
+
+func setColumnStyle(axis string, columnStyle *excelize.Style, startIndex int, endIndex int) error {
+	if columnStyle != nil {
+		style, err := file.NewStyle(columnStyle)
+		if err != nil {
+			return err
+		}
+
+		for i := startIndex; i < endIndex; i++ {
+			currAxis := fmt.Sprintf("%s%d", axis, i)
+
+			file.SetCellStyle(currSpreadsheetName, currAxis, currAxis, style)
+		}
 	}
 
 	return nil

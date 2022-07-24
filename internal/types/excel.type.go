@@ -18,6 +18,7 @@ type ExcelColumn struct {
 	Title  string
 	Values []any
 	Width  float64
+	Style  *excelize.Style
 }
 
 type ExcelCell struct {
